@@ -1,5 +1,5 @@
 %define name	efax-gtk
-%define version 3.0.14
+%define version 3.0.15
 %define release %mkrel 1
 
 Name: 	 	%{name}
