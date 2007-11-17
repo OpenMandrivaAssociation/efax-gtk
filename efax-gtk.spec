@@ -1,5 +1,5 @@
 %define name	efax-gtk
-%define version 3.0.15
+%define version 3.0.16
 %define release %mkrel 1
 
 Name: 	 	%{name}
@@ -12,13 +12,13 @@ URL:		http://efax-gtk.sourceforge.net
 License:	GPL
 Group:		Communications
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	pkgconfig 
-BuildRequires:  gtk2-devel 
-BuildRequires:  sigc++2.0-devel 
+BuildRequires:	pkgconfig
+BuildRequires:  gtk2-devel
+BuildRequires:  sigc++2.0-devel
 BuildRequires:  desktop-file-utils
 
-Requires:	ghostscript 
-Requires:       cups 
+Requires:	ghostscript
+Requires:       cups
 Requires:       gv
 
 %description
@@ -38,8 +38,9 @@ perl -p -i -e 's|ttyS1|modem||g' efax-gtkrc
 %configure2_5x
 perl -p -i -e 's/install-data-hook//g' Makefile efax-gtk-faxfilter/Makefile
 perl -p -i -e 's/usr\/local/usr/g' Makefile
+perl -p -i -e 's/stock_send-fax.png/stock_send-fax/g' efax-gtk.desktop
 %make
-										
+
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
@@ -71,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 %update_menus
 touch /tmp/faxfile.ps
 chmod a+rw /tmp/faxfile.ps
-		
+
 %postun
 %clean_menus
 
