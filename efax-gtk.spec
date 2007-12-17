@@ -11,7 +11,6 @@ Source:		http://prdownloads.sourceforge.net/efax-gtk/%{name}-%{version}.src.tar.
 URL:		http://efax-gtk.sourceforge.net
 License:	GPL
 Group:		Communications
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pkgconfig
 BuildRequires:  gtk2-devel
 BuildRequires:  sigc++2.0-devel
