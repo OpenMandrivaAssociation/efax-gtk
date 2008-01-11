@@ -46,15 +46,6 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{name}" \
-icon="communications_fax_section.png" \
-needs="x11" \
-title="EFax-GTK" \
-longtitle="Send faxes with efax" \
-section="Office/Communications/Fax" xdg="true"
-EOF
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
@@ -83,7 +74,6 @@ chmod a+rw /tmp/faxfile.ps
 %config(noreplace) %{_sysconfdir}/%{name}rc
 %{_datadir}/applications/*
 %{_mandir}/man1/*
-%{_menudir}/%name
 /var/spool/fax/*
 
 
