@@ -60,12 +60,16 @@ desktop-file-install --vendor="" \
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%if %mdkversion < 200900
 %update_menus
+%endif
 touch /tmp/faxfile.ps
 chmod a+rw /tmp/faxfile.ps
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
+%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)
