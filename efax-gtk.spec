@@ -1,6 +1,6 @@
 %define name	efax-gtk
 %define version 3.0.16
-%define release %mkrel 1
+%define release %mkrel 3
 
 Name: 	 	%{name}
 Summary: 	GTK2 frontend for efax
