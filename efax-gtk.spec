@@ -1,3 +1,5 @@
+%define Werror_cflags %nil
+
 %define name	efax-gtk
 %define version 3.0.18
 %define release %mkrel 1
