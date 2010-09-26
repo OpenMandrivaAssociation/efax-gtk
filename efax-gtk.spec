@@ -19,6 +19,7 @@ BuildRequires:  gtk2-devel
 BuildRequires:  sigc++2.0-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:	libtiff-devel
+BuildRequires:	libdbus-glib-1-devel
 
 Requires:	ghostscript
 Requires:       cups
