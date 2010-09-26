@@ -1,7 +1,7 @@
 %define Werror_cflags %nil
 
 %define name	efax-gtk
-%define version 3.0.20
+%define version 3.2.4
 %define release %mkrel 1
 
 Name: 	 	%{name}
@@ -11,7 +11,7 @@ Release: 	%{release}
 
 Source:		http:/prdownloads.sourceforge.net/efax-gtk/%{name}-%{version}.src.tgz
 URL:		http://efax-gtk.sourceforge.net
-License:	GPL
+License:	GPLv2
 Group:		Communications
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pkgconfig
@@ -41,38 +41,27 @@ perl -p -i -e 's|ttyS1|modem||g' efax-gtkrc
 %configure2_5x
 perl -p -i -e 's/install-data-hook//g' Makefile efax-gtk-faxfilter/Makefile
 perl -p -i -e 's/usr\/local/usr/g' Makefile
-perl -p -i -e 's/stock_send-fax.png/stock_send-fax/g' efax-gtk.desktop
+perl -p -i -e 's/efax-gtk.png/efax-gtk/g' efax-gtk.desktop
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 #menu
-
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="X-MandrivaLinux-Office-Communications-Fax" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
-
-
+  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %find_lang %name
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
-%if %mdkversion < 200900
-%update_menus
-%endif
 touch /tmp/faxfile.ps
 chmod a+rw /tmp/faxfile.ps
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -81,6 +70,5 @@ chmod a+rw /tmp/faxfile.ps
 %config(noreplace) %{_sysconfdir}/%{name}rc
 %{_datadir}/applications/*
 %{_mandir}/man1/*
-/var/spool/fax/*
-
-
+%{_datadir}/pixmaps/%{name}.png
+%{_localstatedir}/spool/fax/*
