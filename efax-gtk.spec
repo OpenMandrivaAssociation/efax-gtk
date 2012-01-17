@@ -1,25 +1,25 @@
 %define Werror_cflags %nil
 
 %define name	efax-gtk
-%define version 3.2.5
-%define release %mkrel 1
+%define version 3.2.9
+%define release 1
 
 Name: 	 	%{name}
 Summary: 	GTK2 frontend for efax
 Version: 	%{version}
 Release: 	%{release}
 
-Source:		http:/prdownloads.sourceforge.net/efax-gtk/%{name}-%{version}.src.tgz
+Source0:	http:/prdownloads.sourceforge.net/efax-gtk/%{name}-%{version}.src.tgz
 URL:		http://efax-gtk.sourceforge.net
 License:	GPLv2
 Group:		Communications
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pkgconfig
 BuildRequires:  gtk2-devel
 BuildRequires:  sigc++2.0-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:	libtiff-devel
 BuildRequires:	libdbus-glib-1-devel
+BuildRequires:	c++-gtk-utils-devel
 
 Requires:	ghostscript
 Requires:       cups
@@ -46,7 +46,6 @@ perl -p -i -e 's/efax-gtk.png/efax-gtk/g' efax-gtk.desktop
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 #menu
@@ -57,15 +56,11 @@ desktop-file-install --vendor="" \
 
 %find_lang %name
 
-%clean
-rm -rf %{buildroot}
-
 %post
 touch /tmp/faxfile.ps
 chmod a+rw /tmp/faxfile.ps
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS README BUGS COPYING
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/%{name}rc
