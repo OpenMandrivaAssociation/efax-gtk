@@ -1,7 +1,7 @@
 %define Werror_cflags %nil
 
 %define name	efax-gtk
-%define version 3.2.9
+%define version 3.2.10
 %define release 1
 
 Name: 	 	%{name}
@@ -9,16 +9,16 @@ Summary: 	GTK2 frontend for efax
 Version: 	%{version}
 Release: 	%{release}
 
-Source0:	http:/prdownloads.sourceforge.net/efax-gtk/%{name}-%{version}.src.tgz
+Source0:	http://prdownloads.sourceforge.net/efax-gtk/%{name}-%{version}.src.tgz
 URL:		http://efax-gtk.sourceforge.net
 License:	GPLv2
 Group:		Communications
 BuildRequires:	pkgconfig
-BuildRequires:  gtk2-devel
+BuildRequires:  gtk+3-devel
 BuildRequires:  sigc++2.0-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:	libtiff-devel
-BuildRequires:	libdbus-glib-1-devel
+BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	c++-gtk-utils-devel
 
 Requires:	ghostscript
