@@ -1,15 +1,12 @@
 %define Werror_cflags %nil
 
-%define name	efax-gtk
-%define version 3.2.10
-%define release 1
 
-Name: 	 	%{name}
+Name: 	 	efax-gtk
 Summary: 	GTK2 frontend for efax
-Version: 	%{version}
-Release: 	%{release}
+Version: 	3.2.12
+Release: 	1
 
-Source0:	http://prdownloads.sourceforge.net/efax-gtk/%{name}-%{version}.src.tgz
+Source0:	http://sourceforge.net/projects/efax-gtk/files/efax-gtk/3.2.12/%{name}-%{version}.src.tgz
 URL:		http://efax-gtk.sourceforge.net
 License:	GPLv2
 Group:		Communications
@@ -68,3 +65,4 @@ chmod a+rw /tmp/faxfile.ps
 %{_mandir}/man1/*
 %{_datadir}/pixmaps/%{name}.png
 %{_localstatedir}/spool/fax/*
+
