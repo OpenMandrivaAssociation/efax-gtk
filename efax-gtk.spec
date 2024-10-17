@@ -10,7 +10,7 @@ Version: 	%{version}
 Release: 	%{release}
 
 Source0:	http://prdownloads.sourceforge.net/efax-gtk/%{name}-%{version}.src.tgz
-URL:		http://efax-gtk.sourceforge.net
+URL:		https://efax-gtk.sourceforge.net
 License:	GPLv2
 Group:		Communications
 BuildRequires:	pkgconfig
